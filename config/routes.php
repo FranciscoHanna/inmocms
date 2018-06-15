@@ -59,6 +59,18 @@ Router::scope('/', function (RouteBuilder $routes) {
      */
     $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
 
+    Router::scope('/properties', function ($routes) {
+        $routes->connect('/',['controller' => 'Properties', 'action' => 'index']); 
+        $routes->connect('/add',['controller' => 'Properties', 'action' => 'add']);  
+        $routes->connect('/edit/*',['controller' => 'Properties', 'action' => 'edit']);  
+        $routes->connect('/view/*',['controller' => 'Properties', 'action' => 'view']);  
+    });
+
+    // Router::scope('/comments', function ($routes) {
+    //     $routes->connect('/',['controller' => 'Comment', 'action' => 'index']); 
+    //     $routes->connect('/view/*',['controller' => 'Comment', 'action' => 'view']);  
+    // });
+
     /**
      * Connect catchall routes for all controllers.
      *
