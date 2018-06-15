@@ -8,12 +8,6 @@
     <ul class="side-nav">
         <li class="heading"><?= __('Actions') ?></li>
         <li><?= $this->Html->link(__('List Properties'), ['action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('List Agencies'), ['controller' => 'Agencies', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Agency'), ['controller' => 'Agencies', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Comments'), ['controller' => 'Comments', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Comment'), ['controller' => 'Comments', 'action' => 'add']) ?></li>
-        <li><?= $this->Html->link(__('List Pictures'), ['controller' => 'Pictures', 'action' => 'index']) ?></li>
-        <li><?= $this->Html->link(__('New Picture'), ['controller' => 'Pictures', 'action' => 'add']) ?></li>
     </ul>
 </nav>
 <div class="properties form large-9 medium-8 columns content">
@@ -31,9 +25,9 @@
             echo $this->Form->control('description');
             echo $this->Form->control('bathrooms');
             echo $this->Form->control('garage');
-            echo $this->Form->control('created_at');
-            echo $this->Form->control('updated_at');
-            echo $this->Form->control('agency_id', ['options' => $agencies]);
+            // echo $this->Form->control('created_at');
+            // echo $this->Form->control('updated_at');
+            // echo $this->Form->control('agency_id', ['options' => $agencies]);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Submit')) ?>
