@@ -59,11 +59,22 @@ Router::scope('/', function (RouteBuilder $routes) {
      */
     $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
 
-    Router::scope('/properties', function ($routes) {
+    Router::scope('/admin/properties', function ($routes) {
         $routes->connect('/',['controller' => 'Properties', 'action' => 'index']); 
         $routes->connect('/add',['controller' => 'Properties', 'action' => 'add']);  
-        $routes->connect('/edit/*',['controller' => 'Properties', 'action' => 'edit']);  
-        $routes->connect('/view/*',['controller' => 'Properties', 'action' => 'view']);  
+        $routes->connect('/edit/:property_id',['controller' => 'Properties', 'action' => 'edit'])->setPass(['property_id']);
+        $routes->connect('/:property_id',['controller' => 'Properties', 'action' => 'view'])->setPass(['property_id']);
+    });
+
+    Router::scope('/admin/properties/:property_id/pictures', function ($routes) {
+        $routes->connect('/',['controller' => 'Pictures', 'action' => 'index'])->setPass(['property_id']);
+        $routes->connect('/add',['controller' => 'Pictures', 'action' => 'add'])->setPass(['property_id']);
+        $routes->connect('/delete/:id',['controller' => 'Pictures', 'action' => 'delete'])->setPass(['property_id', 'id']);
+    });
+
+    Router::scope('/admin/agency', function ($routes) {
+        $routes->connect('/',['controller' => 'Agencies', 'action' => 'view']);
+        $routes->connect('/edit',['controller' => 'Agencies', 'action' => 'edit']);
     });
 
     // Router::scope('/comments', function ($routes) {

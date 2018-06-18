@@ -33,6 +33,15 @@ class CommentsTable extends Table
     {
         parent::initialize($config);
 
+        $this->addBehavior('Timestamp', [
+            'events' => [
+                'Model.beforeSave' => [
+                    'created_at' => 'new',
+                    'updated_at' => 'always',
+                ]
+            ]
+        ]);
+
         $this->setTable('comments');
         $this->setDisplayField('name');
         $this->setPrimaryKey('id');
@@ -69,15 +78,15 @@ class CommentsTable extends Table
             ->maxLength('text', 45)
             ->allowEmpty('text');
 
-        $validator
-            ->dateTime('created_at')
-            ->requirePresence('created_at', 'create')
-            ->notEmpty('created_at');
+        // $validator
+        //     ->dateTime('created_at')
+        //     ->requirePresence('created_at', 'create')
+        //     ->notEmpty('created_at');
 
-        $validator
-            ->dateTime('updated_at')
-            ->requirePresence('updated_at', 'create')
-            ->notEmpty('updated_at');
+        // $validator
+        //     ->dateTime('updated_at')
+        //     ->requirePresence('updated_at', 'create')
+        //     ->notEmpty('updated_at');
 
         return $validator;
     }

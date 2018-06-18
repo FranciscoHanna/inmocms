@@ -17,11 +17,6 @@ class Initial extends AbstractMigration
                 'limit' => 45,
                 'null' => true,
             ])
-            ->addColumn('address_two', 'string', [
-                'default' => null,
-                'limit' => 45,
-                'null' => true,
-            ])
             ->addColumn('phone', 'string', [
                 'default' => null,
                 'limit' => 45,
@@ -98,6 +93,11 @@ class Initial extends AbstractMigration
                 'limit' => 255,
                 'null' => true,
             ])
+            ->addColumn('description', 'string', [
+                'default' => null,
+                'limit' => 255,
+                'null' => true,
+            ])
             ->addColumn('property_id', 'integer', [
                 'default' => null,
                 'limit' => 11,
@@ -127,11 +127,6 @@ class Initial extends AbstractMigration
                 'null' => true,
             ])
             ->addColumn('address_one', 'string', [
-                'default' => null,
-                'limit' => 45,
-                'null' => true,
-            ])
-            ->addColumn('address_two', 'string', [
                 'default' => null,
                 'limit' => 45,
                 'null' => true,
@@ -203,6 +198,16 @@ class Initial extends AbstractMigration
                 'default' => null,
                 'limit' => 255,
                 'null' => true,
+            ])
+            ->addColumn('updated_at', 'timestamp', [
+                'default' => 'CURRENT_TIMESTAMP',
+                'limit' => null,
+                'null' => false,
+            ])
+            ->addColumn('created_at', 'timestamp', [
+                'default' => 'CURRENT_TIMESTAMP',
+                'limit' => null,
+                'null' => false,
             ])
             ->create();
 
