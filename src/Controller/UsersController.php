@@ -56,7 +56,7 @@ class UsersController extends AppController
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('El usuario ha sido creado exitosamente'));
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['controller' => 'Agencies', 'action' => 'add']);
             }
             $this->Flash->error(__('El usuario no fue creado. Intente nuevamente'));
         }
