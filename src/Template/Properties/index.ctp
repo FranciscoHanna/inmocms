@@ -72,10 +72,10 @@
         </span>
         <span class="float-right">
             <ul class="pagination">
-                <?= $this->Paginator->first('<< Primero') ?>
-                <?= $this->Paginator->prev('< Anterior') ?>
-                <?= $this->Paginator->numbers() ?>
-                <?= $this->Paginator->next('Siguiente >') ?>
+                <?= $this->Paginator->first('<< Primero') ?>&nbsp;
+                <?= $this->Paginator->prev('< Anterior') ?>&nbsp;
+                <?= $this->Paginator->numbers() ?>&nbsp;
+                <?= $this->Paginator->next('Siguiente >') ?>&nbsp;
                 <?= $this->Paginator->last('Último >>') ?>
             </ul>
         </span>
