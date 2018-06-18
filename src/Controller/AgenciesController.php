@@ -18,15 +18,15 @@ class AgenciesController extends AppController
      *
      * @return \Cake\Http\Response|void
      */
-    public function index()
-    {
-        $this->paginate = [
-            'contain' => ['Users']
-        ];
-        $agencies = $this->paginate($this->Agencies);
+    // public function index()
+    // {
+    //     $this->paginate = [
+    //         'contain' => ['Users']
+    //     ];
+    //     $agencies = $this->paginate($this->Agencies);
 
-        $this->set(compact('agencies'));
-    }
+    //     $this->set(compact('agencies'));
+    // }
 
     /**
      * View method
@@ -37,6 +37,7 @@ class AgenciesController extends AppController
      */
     public function view($id = null)
     {
+        $id = 1;
         $agency = $this->Agencies->get($id, [
             'contain' => ['Users', 'Properties']
         ]);
@@ -49,21 +50,21 @@ class AgenciesController extends AppController
      *
      * @return \Cake\Http\Response|null Redirects on successful add, renders view otherwise.
      */
-    public function add()
-    {
-        $agency = $this->Agencies->newEntity();
-        if ($this->request->is('post')) {
-            $agency = $this->Agencies->patchEntity($agency, $this->request->getData());
-            if ($this->Agencies->save($agency)) {
-                $this->Flash->success(__('The agency has been saved.'));
+    // public function add()
+    // {
+    //     $agency = $this->Agencies->newEntity();
+    //     if ($this->request->is('post')) {
+    //         $agency = $this->Agencies->patchEntity($agency, $this->request->getData());
+    //         if ($this->Agencies->save($agency)) {
+    //             $this->Flash->success(__('The agency has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
-            }
-            $this->Flash->error(__('The agency could not be saved. Please, try again.'));
-        }
-        $users = $this->Agencies->Users->find('list', ['limit' => 200]);
-        $this->set(compact('agency', 'users'));
-    }
+    //             return $this->redirect(['action' => 'index']);
+    //         }
+    //         $this->Flash->error(__('The agency could not be saved. Please, try again.'));
+    //     }
+    //     $users = $this->Agencies->Users->find('list', ['limit' => 200]);
+    //     $this->set(compact('agency', 'users'));
+    // }
 
     /**
      * Edit method
@@ -74,17 +75,18 @@ class AgenciesController extends AppController
      */
     public function edit($id = null)
     {
+        $id = 1;
         $agency = $this->Agencies->get($id, [
             'contain' => []
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $agency = $this->Agencies->patchEntity($agency, $this->request->getData());
             if ($this->Agencies->save($agency)) {
-                $this->Flash->success(__('The agency has been saved.'));
+                $this->Flash->success('Los datos han sido actualizados');
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect('/admin/agency');
             }
-            $this->Flash->error(__('The agency could not be saved. Please, try again.'));
+            $this->Flash->error('Los datos no pudieron ser actualizados');
         }
         $users = $this->Agencies->Users->find('list', ['limit' => 200]);
         $this->set(compact('agency', 'users'));

@@ -33,6 +33,15 @@ class PicturesTable extends Table
     {
         parent::initialize($config);
 
+        $this->addBehavior('Timestamp', [
+            'events' => [
+                'Model.beforeSave' => [
+                    'created_at' => 'new',
+                    'updated_at' => 'always',
+                ]
+            ]
+        ]);
+
         $this->setTable('pictures');
         $this->setDisplayField('id');
         $this->setPrimaryKey('id');
@@ -61,14 +70,19 @@ class PicturesTable extends Table
             ->allowEmpty('url');
 
         $validator
-            ->dateTime('created_at')
-            ->requirePresence('created_at', 'create')
-            ->notEmpty('created_at');
+            ->scalar('description')
+            ->maxLength('description', 255)
+            ->allowEmpty('description');
 
-        $validator
-            ->dateTime('updated_at')
-            ->requirePresence('updated_at', 'create')
-            ->notEmpty('updated_at');
+        // $validator
+        //     ->dateTime('created_at')
+        //     ->requirePresence('created_at', 'create')
+        //     ->notEmpty('created_at');
+
+        // $validator
+        //     ->dateTime('updated_at')
+        //     ->requirePresence('updated_at', 'create')
+        //     ->notEmpty('updated_at');
 
         return $validator;
     }
