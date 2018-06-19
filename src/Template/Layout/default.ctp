@@ -47,13 +47,13 @@ $cakeDescription = 'InmoCMS';
                 <h3 class="font-weight-bold">InmoCMS</h3>
                 <ul class="nav nav-pills flex-column my-3">
                     <li class="nav-item">
-                        <a class="nav-link <?= preg_match("(/admin/properties/*)", $this->request->here(true)) ? 'active' : '' ?>" href="/admin/properties">
+                        <a class="nav-link <?= preg_match("(/admin/properties/*)", $this->request->getRequestTarget(true)) ? 'active' : '' ?>" href="/admin/properties">
                         <i class="fa fa-home"></i> 
                         Mis propiedades
                     </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link <?= preg_match("(/admin/agency/*)", $this->request->here(true)) ? 'active' : '' ?>" href="/admin/agency">
+                        <a class="nav-link <?= preg_match("(/admin/agency/*)", $this->request->getRequestTarget(true)) ? 'active' : '' ?>" href="/admin/agency">
                         <i class="fa fa-suitcase"></i> 
                         Mi agencia
                     </a>
