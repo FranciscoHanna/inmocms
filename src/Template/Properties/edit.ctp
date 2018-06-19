@@ -18,8 +18,8 @@
                 <div class="my-3">
                     <?= $this->Form->control('type', [
                         'options' => [
-                            'rent' => __('En venta'),
-                            'sale' => __('En alquiler')
+                            'sale' => __('En venta'),
+                            'rent' => __('En alquiler')
                         ],
                         'label' => false, 
                         'class' => 'form-control'
