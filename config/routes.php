@@ -52,12 +52,38 @@ Router::scope('/', function (RouteBuilder $routes) {
      * its action called 'display', and we pass a param to select the view file
      * to use (in this case, src/Template/Pages/home.ctp)...
      */
-    $routes->connect('/', ['controller' => 'Pages', 'action' => 'display', 'home']);
+    $routes->connect('/', ['controller' => 'Pages', 'action' => 'home']);
+    $routes->connect('/properties', ['controller' => 'Pages', 'action' => 'home']);
+    $routes->connect('/properties/:property_id', ['controller' => 'Pages', 'action' => 'properties'])->setPass(['property_id']);
+    $routes->connect('/properties/:property_id/comments', ['controller' => 'Comments', 'action' => 'add'])->setPass(['property_id']);
 
     /**
      * ...and connect the rest of 'Pages' controller's URLs.
      */
     $routes->connect('/pages/*', ['controller' => 'Pages', 'action' => 'display']);
+
+    Router::scope('/admin/properties', function ($routes) {
+        $routes->connect('/',['controller' => 'Properties', 'action' => 'index']); 
+        $routes->connect('/add',['controller' => 'Properties', 'action' => 'add']);  
+        $routes->connect('/edit/:property_id',['controller' => 'Properties', 'action' => 'edit'])->setPass(['property_id']);
+        $routes->connect('/:property_id',['controller' => 'Properties', 'action' => 'view'])->setPass(['property_id']);
+    });
+
+    Router::scope('/admin/properties/:property_id/pictures', function ($routes) {
+        $routes->connect('/',['controller' => 'Pictures', 'action' => 'index'])->setPass(['property_id']);
+        $routes->connect('/add',['controller' => 'Pictures', 'action' => 'add'])->setPass(['property_id']);
+        $routes->connect('/delete/:id',['controller' => 'Pictures', 'action' => 'delete'])->setPass(['property_id', 'id']);
+    });
+
+    Router::scope('/admin/agency', function ($routes) {
+        $routes->connect('/',['controller' => 'Agencies', 'action' => 'view']);
+        $routes->connect('/edit',['controller' => 'Agencies', 'action' => 'edit']);
+    });
+
+    // Router::scope('/comments', function ($routes) {
+    //     $routes->connect('/',['controller' => 'Comment', 'action' => 'index']); 
+    //     $routes->connect('/view/*',['controller' => 'Comment', 'action' => 'view']);  
+    // });
 
     /**
      * Connect catchall routes for all controllers.
