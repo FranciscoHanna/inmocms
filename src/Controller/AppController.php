@@ -45,11 +45,38 @@ class AppController extends Controller
             'enableBeforeRedirect' => false,
         ]);
         $this->loadComponent('Flash');
+        $this->loadComponent('Auth',[
+            'authorize'=>['Controller'],
+            'authenticate'=>[
+                'Form'=>[
+                    'fields'=>[
+                        'username'=>'username',
+                        'password'=>'password'
+                    ]
+                ]
+            ],
+            'loginAction'=>[
+                'controller'=>'Users',
+                'action'=>'login'
+            ],
+            'authError'=>"Ingrese sus datos correctamente",
+            'loginRedirect'=>[
+                'controller'=>'Users',
+                'action'=>'add'
+            ],
+            'logoutRedirect'=>[
+                'controller'=>'Users',
+                'action'=>'login'
+            ]
+        ]);
 
         /*
          * Enable the following component for recommended CakePHP security settings.
          * see https://book.cakephp.org/3.0/en/controllers/components/security.html
          */
         //$this->loadComponent('Security');
+    }
+    public function isAuthorized($user){
+        return true;
     }
 }

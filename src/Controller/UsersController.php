@@ -7,6 +7,7 @@ use App\Controller\AppController;
  * Users Controller
  *
  * @property \App\Model\Table\UsersTable $Users
+ * @property \App\Model\Table\AgenciesTable $Agencies
  *
  * @method \App\Model\Entity\User[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
  */
@@ -18,6 +19,34 @@ class UsersController extends AppController
      *
      * @return \Cake\Http\Response|void
      */
+
+     public function login()
+     {
+      
+         if($this->request->is('post'))
+         { 
+             // debug($this->request->data);
+             $user = $this->Auth->identify();
+             if($user)
+             {
+                 $this->Auth->setUser($user);
+                 //$opciones=array('conditions' => array('Agencies.user_id' => $user.id));
+                // $todasAgencias = $this->Users->Agencies->find('all');
+
+
+                 return $this->redirect($this->Auth->redirectUrl());
+             }else
+             {
+                 $this->Flash->error('Los datos ingresados son incorrectos, intente nuevamente',
+                ['key'=>'auth']);
+             }
+         }
+     }
+
+     public function logout()
+     {
+         return $this->redirect($this->Auth->logout());
+     }
     public function index()
     {
         $users = $this->paginate($this->Users);
