@@ -15,6 +15,7 @@
 <div class="users form large-9 medium-8 columns content">
     <?= $this->Form->create($user) ?>
     <fieldset>
+    <h3>Bienvenido <?= $current_user['username']?></h3>
         <legend><?= __('Agregar Usuario') ?></legend>
         <?php
             echo $this->Form->control('username');

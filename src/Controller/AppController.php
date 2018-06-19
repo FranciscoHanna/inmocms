@@ -67,7 +67,8 @@ class AppController extends Controller
             'logoutRedirect'=>[
                 'controller'=>'Users',
                 'action'=>'login'
-            ]
+            ],
+            'unanthorizedRedirect'=>$this->referer()
         ]);
 
         /*
@@ -76,7 +77,13 @@ class AppController extends Controller
          */
         //$this->loadComponent('Security');
     }
+    public function beforeFilter(Event $event){
+        $this->set('current_user', $this->Auth->user());
+    }
     public function isAuthorized($user){
+    if(isset($user['id'])){
         return true;
+    }
+    return false;
     }
 }

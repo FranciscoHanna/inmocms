@@ -17,6 +17,7 @@
 <div class="agencies form large-9 medium-8 columns content">
     <?= $this->Form->create($agency) ?>
     <fieldset>
+    
         <legend><?= __('Agregar Agencia') ?></legend>
         <?php
             echo $this->Form->control('name');

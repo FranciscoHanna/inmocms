@@ -29,7 +29,11 @@ class UsersController extends AppController
              $user = $this->Auth->identify();
              if($user)
              {
+
+                
                  $this->Auth->setUser($user);
+              /*   $query->select(['name'])->where(['Agencies.id'=>$user['id']]);
+                 debug($this->$query);*/
                  //$opciones=array('conditions' => array('Agencies.user_id' => $user.id));
                 // $todasAgencias = $this->Users->Agencies->find('all');
 
@@ -135,4 +139,11 @@ class UsersController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+/*
+    public function findAuth(\Cake\ORM\Query $query, array $options){
+        $query->select(['name'])
+        ->where(['Agencies.id'=>$user['id']]);
+        return $query;
+
+    }*/
 }
