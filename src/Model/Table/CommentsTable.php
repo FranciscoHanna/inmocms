@@ -75,18 +75,8 @@ class CommentsTable extends Table
 
         $validator
             ->scalar('text')
-            ->maxLength('text', 45)
+            ->maxLength('text', 255)
             ->allowEmpty('text');
-
-        // $validator
-        //     ->dateTime('created_at')
-        //     ->requirePresence('created_at', 'create')
-        //     ->notEmpty('created_at');
-
-        // $validator
-        //     ->dateTime('updated_at')
-        //     ->requirePresence('updated_at', 'create')
-        //     ->notEmpty('updated_at');
 
         return $validator;
     }
@@ -100,7 +90,6 @@ class CommentsTable extends Table
      */
     public function buildRules(RulesChecker $rules)
     {
-        $rules->add($rules->isUnique(['email']));
         $rules->add($rules->existsIn(['property_id'], 'Properties'));
 
         return $rules;

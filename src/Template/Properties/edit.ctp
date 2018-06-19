@@ -14,13 +14,12 @@
     <div class="text-muted pt-2 w-100">
         <div class="row">
             <div class="col-12">
-            
-                <?= $this->Form->control('title', ['div' => false, 'label' => false, 'class' => 'form-control form-control-lg']); ?>
+            <?= $this->Form->control('title', ['div' => false, 'label' => false, 'class' => 'form-control form-control-lg', 'placeholder' => 'Título de la propiedad', 'required' => true]); ?>
                 <div class="my-3">
-                    <?= $this->Form->input('type', [
+                    <?= $this->Form->control('type', [
                         'options' => [
-                            'rent' => __('Venta'),
-                            'sale' => __('Alquiler')
+                            'sale' => __('En venta'),
+                            'rent' => __('En alquiler')
                         ],
                         'label' => false, 
                         'class' => 'form-control'
@@ -32,7 +31,7 @@
                             <i class="fa fa-usd"></i>
                         </span>
                     </div>
-                    <?= $this->Form->control('price', ['label' => '', 'class' => 'form-control']); ?>
+                    <?= $this->Form->control('price', ['label' => '', 'class' => 'form-control', 'required' => true]); ?>
                 </div>
                 
                 <div class="input-group my-3">
@@ -41,7 +40,7 @@
                             <i class="fa fa-map-marker"></i>
                         </span>
                     </div>
-                    <?= $this->Form->control('address_one', ['label' => false, 'class' => 'form-control']); ?>
+                    <?= $this->Form->control('address_one', ['label' => false, 'class' => 'form-control', 'required' => true]); ?>
                 </div>
 
                 <div class="row">
@@ -52,7 +51,7 @@
                                     <i class="fa fa-expand"></i>
                                 </span>
                             </div>
-                            <?= $this->Form->control('area', ['label' => '', 'class' => 'form-control']); ?>
+                            <?= $this->Form->control('area', ['label' => '', 'class' => 'form-control', 'required' => true]); ?>
                             <div class="input-group-append">
                                 <span class="input-group-text bg-white">
                                     m<sup>2</sup>
@@ -67,7 +66,7 @@
                                     <i class="fa fa-bed"></i>
                                 </span>
                             </div>
-                            <?= $this->Form->control('bedrooms', ['label' => '', 'class' => 'form-control']); ?>
+                            <?= $this->Form->control('bedrooms', ['label' => '', 'class' => 'form-control', 'required' => true]); ?>
                         </div>
                     </div>
                     <div class="col-3">
@@ -77,7 +76,7 @@
                                     <i class="fa fa-bath"></i>
                                 </span>
                             </div>
-                            <?= $this->Form->control('bathrooms', ['label' => '', 'class' => 'form-control']); ?>
+                            <?= $this->Form->control('bathrooms', ['label' => '', 'class' => 'form-control', 'required' => true]); ?>
                         </div>
                     </div>
                     <div class="col-3">
@@ -87,26 +86,28 @@
                                     <i class="fa fa-car"></i>
                                 </span>
                             </div>
-                            <?= $this->Form->input('garage', [
+                            <?= $this->Form->control('garage', [
                                 'options' => [
                                     0 => __('Sí'),
                                     1 => __('No')
                                 ],
                                 'label' => '', 
-                                'class' => 'form-control'
+                                'class' => 'form-control',
+                                'required' => true
                             ]); ?>
                         </div>
                     </div>
                 </div>
-
-                <?= $this->Form->control('description', ['label' => '', 'class' => 'form-control']); ?>
                 
-                <div class="clearfix">
-                    <span class="float-right">
-                        <a class="btn text-dark mt-3" href="/admin/properties/<?= $property->id?>">Cancelar</a>
-                        <?= $this->Form->button('Guardar cambios', ['class' => 'btn btn-primary mt-3']) ?>
-                    </span>
+                <div class="mt-3">
+                    <label>Acerca de la propiedad:</label>
+                    <?= $this->Form->control('description', ['label' => '', 'class' => 'form-control']); ?>
                 </div>
+                
+                <span class="float-right">
+                    <a class="btn text-dark mt-3" href="/admin/properties/<?= $property->id?>">Cancelar</a>
+                    <?= $this->Form->button('Guardar', ['class' => 'btn btn-primary mt-3']) ?>
+                </span>
             </div>
         </div>
     </div>
