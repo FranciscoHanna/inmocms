@@ -8,6 +8,7 @@ use Cake\ORM\Entity;
  *
  * @property int $id
  * @property string $url
+ * @property string $description
  * @property int $property_id
  * @property \Cake\I18n\FrozenTime $created_at
  * @property \Cake\I18n\FrozenTime $updated_at
@@ -28,6 +29,7 @@ class Picture extends Entity
      */
     protected $_accessible = [
         'url' => true,
+        'description' => true,
         'property_id' => true,
         'created_at' => true,
         'updated_at' => true,
