@@ -41,8 +41,8 @@ class UsersController extends AppController
                  return $this->redirect($this->Auth->redirectUrl());
              }else
              {
-                 $this->Flash->error('Los datos ingresados son incorrectos, intente nuevamente',
-                ['key'=>'auth']);
+                //  $this->Flash->error('Los datos ingresados son incorrectos, intente nuevamente',
+                // ['key'=>'auth']);
              }
          }
      }

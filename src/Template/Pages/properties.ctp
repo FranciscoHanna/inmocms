@@ -34,10 +34,9 @@
 <div class="container pb-3">
     <div class="carousel slide w-100" data-ride="carousel">
         <div class="carousel-inner w-100">
-            <?php foreach($property->pictures as $picture): ?>
-                <div class="rounded box-shadow carousel-item active w-100"style="height: 450px; background-position:center; background-size: cover; background-image: url(<?= count($property->pictures) > 0 ? DS . $property->pictures[0]->url: 'http://reformasquale.com/wp-content/uploads/2016/03/import_placeholder.png' ?>)">
+
+                <div class="rounded box-shadow carousel-item active"style="height: 450px; background-position:center; background-size: cover; background-image: url(<?= count($property->pictures) > 0 ? DS . $property->pictures[0]->url: 'http://reformasquale.com/wp-content/uploads/2016/03/import_placeholder.png' ?>)">
                 </div>
-            <?php endforeach; ?>
         </div>
         <a class="carousel-control-prev"  href="#" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
