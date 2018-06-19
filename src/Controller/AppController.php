@@ -61,14 +61,14 @@ class AppController extends Controller
             ],
             'authError'=>"Ingrese sus datos correctamente",
             'loginRedirect'=>[
-                'controller'=>'Users',
-                'action'=>'add'
+                'controller'=>'Properties',
+                'action'=>'index'
             ],
             'logoutRedirect'=>[
                 'controller'=>'Users',
                 'action'=>'login'
             ],
-            'unanthorizedRedirect'=>$this->referer()
+            'authorize'=>array('Controller')
         ]);
 
         /*
@@ -78,10 +78,15 @@ class AppController extends Controller
         //$this->loadComponent('Security');
     }
     public function beforeFilter(Event $event){
+       
+   
+        
         $this->set('current_user', $this->Auth->user());
+
+      
     }
     public function isAuthorized($user){
-    if(isset($user['id'])){
+    if(isset($user['username'])!== null){
         return true;
     }
     return false;
