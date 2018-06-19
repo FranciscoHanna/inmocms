@@ -3,7 +3,7 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Property $property
  */
-$this->Form->templates(['inputContainer' => '{{content}}']);
+$this->Form->setTemplates(['inputContainer' => '{{content}}']);
 ?>
 <h3>Nueva propiedad</h3>
 

@@ -3,7 +3,7 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Agency $agency
  */
-$this->Form->templates(['inputContainer' => '{{content}}']);
+$this->Form->setTemplates(['inputContainer' => '{{content}}']);
 ?>
 
 <h3>

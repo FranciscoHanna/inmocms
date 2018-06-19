@@ -3,7 +3,7 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Picture $picture
  */
-$this->Form->templates(['inputContainer' => '{{content}}']);
+$this->Form->setTemplates(['inputContainer' => '{{content}}']);
 ?>
 <h3><?= __('Añadir foto a '.$property->title) ?></h3>
 
