@@ -12,6 +12,16 @@ use App\Controller\AppController;
  */
 class PagesController extends AppController
 {   
+   /* public function isAuthorized($user)
+    {
+        if(isset($user['username'])!== null){
+            if(in_array($this->request->action,['index','logout','add']))
+            {
+                return true;
+            }
+            return parent::isAuthorized($user);
+        }
+    }*/
     public function home()
     {
         $this->viewBuilder()->setLayout('landing');

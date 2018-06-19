@@ -45,21 +45,28 @@ $cakeDescription = 'InmoCMS';
         <div class="col-12 col-sm-4 col-md-3 col-lg-2">
             <nav>
                 <h3 class="font-weight-bold">InmoCMS</h3>
+                <hr>
+                <h6><i class="fa fa-user"></i> <?= $current_user['username']?></h6>
+                <hr>
+             
                 <ul class="nav nav-pills flex-column my-3">
                     <li class="nav-item">
                         <a class="nav-link <?= preg_match("(/admin/properties/*)", $this->request->getRequestTarget(true)) ? 'active' : '' ?>" href="/admin/properties">
-                        <i class="fa fa-home"></i> 
-                        Mis propiedades
-                    </a>
+                            <i class="fa fa-home"></i> 
+                            Mis propiedades
+                        </a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link <?= preg_match("(/admin/agency/*)", $this->request->getRequestTarget(true)) ? 'active' : '' ?>" href="/admin/agency">
-                        <i class="fa fa-suitcase"></i> 
-                        Mi agencia
-                    </a>
+                            <i class="fa fa-suitcase"></i> 
+                            Mi agencia
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Cerrar sesión</a>
+                        <a class="nav-link" href="/users/logout">
+                            <i class="fa fa-sign-out"></i>
+                            Cerrar sesión
+                        </a>
                     </li>
                 </ul>
             </nav>

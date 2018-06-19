@@ -7,6 +7,7 @@ use App\Controller\AppController;
  * Users Controller
  *
  * @property \App\Model\Table\UsersTable $Users
+ * @property \App\Model\Table\AgenciesTable $Agencies
  *
  * @method \App\Model\Entity\User[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
  */
@@ -18,6 +19,38 @@ class UsersController extends AppController
      *
      * @return \Cake\Http\Response|void
      */
+
+     public function login()
+     {
+      $this->viewBuilder()->setLayout("");
+         if($this->request->is('post'))
+         { 
+             // debug($this->request->data);
+             $user = $this->Auth->identify();
+             if($user)
+             {
+
+                
+                 $this->Auth->setUser($user);
+              /*   $query->select(['name'])->where(['Agencies.id'=>$user['id']]);
+                 debug($this->$query);*/
+                 //$opciones=array('conditions' => array('Agencies.user_id' => $user.id));
+                // $todasAgencias = $this->Users->Agencies->find('all');
+
+
+                 return $this->redirect($this->Auth->redirectUrl());
+             }else
+             {
+                 $this->Flash->error('Los datos ingresados son incorrectos, intente nuevamente',
+                ['key'=>'auth']);
+             }
+         }
+     }
+
+     public function logout()
+     {
+         return $this->redirect($this->Auth->logout());
+     }
     public function index()
     {
         $users = $this->paginate($this->Users);
@@ -50,13 +83,15 @@ class UsersController extends AppController
     {
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
+
+           /* debug($this->request->data);*/
             $user = $this->Users->patchEntity($user, $this->request->getData());
             if ($this->Users->save($user)) {
-                $this->Flash->success(__('The user has been saved.'));
+                $this->Flash->success(__('El usuario ha sido creado exitosamente'));
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['controller' => 'Agencies', 'action' => 'add']);
             }
-            $this->Flash->error(__('The user could not be saved. Please, try again.'));
+            $this->Flash->error(__('El usuario no fue creado. Intente nuevamente'));
         }
         $this->set(compact('user'));
     }
@@ -104,4 +139,11 @@ class UsersController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+/*
+    public function findAuth(\Cake\ORM\Query $query, array $options){
+        $query->select(['name'])
+        ->where(['Agencies.id'=>$user['id']]);
+        return $query;
+
+    }*/
 }
