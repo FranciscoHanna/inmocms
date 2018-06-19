@@ -72,19 +72,15 @@ $cakeDescription = 'InmoCMS';
       <div class="container">
         <div class="text-center">
             <h4 class="font-weight-normal mb-4 text-primary">
-                <i class="fa fa-map-marker"></i>
-                <?= $agency->address_one ?>
+                <a href="tel:<?= $agency->email ?>">
+                    <i class="fa fa-envelope"></i>
+                    <?= $agency->email ?>
+                </a>
             </h4>
             <h4 class="font-weight-normal mb-4 text-primary">
                 <a href="tel:<?= $agency->phone ?>">
                     <i class="fa fa-phone"></i>
                     <?= $agency->phone ?>
-                </a>
-            </h4>
-            <h4 class="font-weight-normal mb-4 text-primary">
-                <a href="tel:<?= $agency->email ?>">
-                    <i class="fa fa-envelope"></i>
-                    <?= $agency->email ?>
                 </a>
             </h4>
         </div>
