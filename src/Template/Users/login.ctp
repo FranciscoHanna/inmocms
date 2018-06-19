@@ -34,14 +34,14 @@
                             <div style="margin-bottom: 25px" >
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                                          
-                                        <?= $this->Form->input('username',['class'=>'form-control form-control-lg','placeholder'=>'Nombre de usuario', 'label'=>false, 'required']) ?>                                  
+                                        <?= $this->Form->control('username',['class'=>'form-control form-control-lg','placeholder'=>'Nombre de usuario', 'label'=>false, 'required']) ?>                                  
                                     </div>
                                 
                             <div style="margin-bottom: 25px" >
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                                     
                                       
-                                      <?= $this->Form->input('password',['class'=>'form-control form-control-lg','placeholder'=>'Contraseña', 'label'=>false, 'required']) ?>   
+                                      <?= $this->Form->control('password',['class'=>'form-control form-control-lg','placeholder'=>'Contraseña', 'label'=>false, 'required']) ?>   
                                     </div>
                                     
 
