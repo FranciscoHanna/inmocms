@@ -10,6 +10,8 @@ use Cake\Auth\DefaultPasswordHasher;
  * @property int $id
  * @property string $username
  * @property string $password
+ * @property \Cake\I18n\FrozenTime $updated_at
+ * @property \Cake\I18n\FrozenTime $created_at
  *
  * @property \App\Model\Entity\Agency[] $agencies
  */
@@ -28,6 +30,8 @@ class User extends Entity
     protected $_accessible = [
         'username' => true,
         'password' => true,
+        'updated_at' => true,
+        'created_at' => true,
         'agencies' => true
     ];
 

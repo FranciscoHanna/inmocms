@@ -34,6 +34,15 @@ class AgenciesTable extends Table
     {
         parent::initialize($config);
 
+        $this->addBehavior('Timestamp', [
+            'events' => [
+                'Model.beforeSave' => [
+                    'created_at' => 'new',
+                    'updated_at' => 'always',
+                ]
+            ]
+        ]);
+
         $this->setTable('agencies');
         $this->setDisplayField('name');
         $this->setPrimaryKey('id');
@@ -69,10 +78,10 @@ class AgenciesTable extends Table
             ->maxLength('address_one', 45)
             ->allowEmpty('address_one');
 
-        $validator
-            ->scalar('address_two')
-            ->maxLength('address_two', 45)
-            ->allowEmpty('address_two');
+        // $validator
+        //     ->scalar('address_two')
+        //     ->maxLength('address_two', 45)
+        //     ->allowEmpty('address_two');
 
         $validator
             ->scalar('phone')
@@ -83,15 +92,15 @@ class AgenciesTable extends Table
             ->email('email')
             ->allowEmpty('email');
 
-        $validator
-            ->dateTime('updated_at')
-            ->requirePresence('updated_at', 'create')
-            ->notEmpty('updated_at');
+        // $validator
+        //     ->dateTime('updated_at')
+        //     ->requirePresence('updated_at', 'create')
+        //     ->notEmpty('updated_at');
 
-        $validator
-            ->dateTime('created_at')
-            ->requirePresence('created_at', 'create')
-            ->notEmpty('created_at');
+        // $validator
+        //     ->dateTime('created_at')
+        //     ->requirePresence('created_at', 'create')
+        //     ->notEmpty('created_at');
 
         return $validator;
     }

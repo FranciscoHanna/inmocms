@@ -21,7 +21,7 @@ class PropertiesController extends AppController
     public function index()
     {
         $this->paginate = [
-            'contain' => ['Agencies']
+            'contain' => ['Pictures']
         ];
         $properties = $this->paginate($this->Properties);
 
@@ -51,13 +51,15 @@ class PropertiesController extends AppController
      */
     public function add()
     {
-        $property = $this->Properties->newEntity();
+        $property = $this->Properties->newEntity([
+            'agency_id' => 1
+        ]);
         if ($this->request->is('post')) {
             $property = $this->Properties->patchEntity($property, $this->request->getData());
             if ($this->Properties->save($property)) {
                 $this->Flash->success(__('The property has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'view', $property->id]);
             }
             $this->Flash->error(__('The property could not be saved. Please, try again.'));
         }
@@ -75,19 +77,18 @@ class PropertiesController extends AppController
     public function edit($id = null)
     {
         $property = $this->Properties->get($id, [
-            'contain' => []
+            'contain' => ['pictures']
         ]);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $property = $this->Properties->patchEntity($property, $this->request->getData());
             if ($this->Properties->save($property)) {
                 $this->Flash->success(__('The property has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'view', $id]);
             }
             $this->Flash->error(__('The property could not be saved. Please, try again.'));
         }
-        $agencies = $this->Properties->Agencies->find('list', ['limit' => 200]);
-        $this->set(compact('property', 'agencies'));
+        $this->set(compact('property'));
     }
 
     /**

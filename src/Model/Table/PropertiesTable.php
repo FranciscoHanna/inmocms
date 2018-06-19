@@ -35,6 +35,15 @@ class PropertiesTable extends Table
     {
         parent::initialize($config);
 
+        $this->addBehavior('Timestamp', [
+            'events' => [
+                'Model.beforeSave' => [
+                    'created_at' => 'new',
+                    'updated_at' => 'always',
+                ]
+            ]
+        ]);
+
         $this->setTable('properties');
         $this->setDisplayField('title');
         $this->setPrimaryKey('id');
@@ -44,9 +53,11 @@ class PropertiesTable extends Table
             'joinType' => 'INNER'
         ]);
         $this->hasMany('Comments', [
+            'dependent' => true,
             'foreignKey' => 'property_id'
         ]);
         $this->hasMany('Pictures', [
+            'dependent' => true,
             'foreignKey' => 'property_id'
         ]);
     }
@@ -107,15 +118,15 @@ class PropertiesTable extends Table
             ->boolean('garage')
             ->allowEmpty('garage');
 
-        $validator
-            ->dateTime('created_at')
-            ->requirePresence('created_at', 'create')
-            ->notEmpty('created_at');
+        // $validator
+        //     ->dateTime('created_at')
+        //     ->requirePresence('created_at', 'create')
+        //     ->notEmpty('created_at');
 
-        $validator
-            ->dateTime('updated_at')
-            ->requirePresence('updated_at', 'create')
-            ->notEmpty('updated_at');
+        // $validator
+        //     ->dateTime('updated_at')
+        //     ->requirePresence('updated_at', 'create')
+        //     ->notEmpty('updated_at');
 
         return $validator;
     }
