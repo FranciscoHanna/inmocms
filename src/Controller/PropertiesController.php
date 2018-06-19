@@ -13,6 +13,21 @@ use App\Controller\AppController;
 class PropertiesController extends AppController
 {
 
+    public function isAuthorized($user) {
+        // All registered users can add posts
+        
+    
+        // The owner of a post can edit and delete it
+        if (in_array($this->action, array('edit', 'delete','add','index','logout','view'))) {
+            $postId = (int) $this->request->params['pass'][0];
+            if ($this->Post->isOwnedBy($postId, $user['id'])) {
+                return true;
+            }
+        }
+    
+        return parent::isAuthorized($user);
+    }
+ 
     /**
      * Index method
      *
@@ -109,5 +124,10 @@ class PropertiesController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
+    }
+
+    public function logout()
+    {
+        return $this->redirect($this->Auth->logout());
     }
 }

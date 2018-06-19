@@ -22,7 +22,7 @@ class UsersController extends AppController
 
      public function login()
      {
-      
+      $this->viewBuilder()->setLayout("");
          if($this->request->is('post'))
          { 
              // debug($this->request->data);

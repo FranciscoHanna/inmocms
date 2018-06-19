@@ -2,7 +2,7 @@
 <!DOCTYPE html>
  
 <html lang="es">
- 
+
 <head>
 <title>Titulo de la web</title>
 <meta charset="utf-8" />
@@ -15,12 +15,13 @@
  
 <body>
 <div class="container">    
-        <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
+        <div id="loginbox" style="margin-top:50px; margin-left:25%;" class="col-md-6 col-md-offset-4">                    
+        
            <?= $this->Flash->render('auth') ?>
       
             <div class="panel panel-info" >
                     <div class="panel-heading">
-                        <div class="panel-title">Iniciar Sesión</div>
+                        <h2>InmoCMS &nbsp;&nbsp;|  &nbsp;  &nbsp;     &nbsp;  &nbsp;      Iniciar Sesión</h2>
                         
                     </div>     
 
@@ -28,18 +29,18 @@
 
                         <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
                         <?= $this->Form->create() ?>
-                     <!--   <form id="loginform" class="form-horizontal" role="form">-->
+                    
                                     
                             <div style="margin-bottom: 25px" >
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                      <!--  <input id="login-username" type="text" class="form-control" name="username" value="" placeholder="username or email">   -->   
+                                         
                                         <?= $this->Form->input('username',['class'=>'form-control form-control-lg','placeholder'=>'Nombre de usuario', 'label'=>false, 'required']) ?>                                  
                                     </div>
                                 
                             <div style="margin-bottom: 25px" >
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                                     
-                                      <!--  <input id="login-password" type="password" class="form-control" name="password" placeholder="password">-->
+                                      
                                       <?= $this->Form->input('password',['class'=>'form-control form-control-lg','placeholder'=>'Contraseña', 'label'=>false, 'required']) ?>   
                                     </div>
                                     
@@ -61,8 +62,7 @@
                                     <?= $this->Form->button('Acceder', ['class'=>'btn btn-success'])?>
                                      <!-- <a id="btn-login" href="#" class="btn btn-success">Login  </a>-->
                                      <!-- <a id="btn-fblogin" href="#" class="btn btn-primary">Login with Facebook</a>-->
-                                      <?= $this->Html->link('Registrar', ['controller'=>'Users', 'action'=>'add'],['class'=>'btn btn-primary'])?>
-                                      <?= $this->Html->link('Salir', ['controller'=>'Users', 'action'=>'logout'],['class'=>'btn btn-warning'])?>
+                                     
                                     </div>
                                 </div>
 
