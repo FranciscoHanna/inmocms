@@ -10,7 +10,7 @@
         <li><?= $this->Html->link(__('Agregar propiedad'), ['action' => 'add']) ?></li>
     </ul>
 </nav> -->
-<h3><?= __('Mis Propiedades') ?>
+<h3><?= __('Propiedades') ?>
     <a href="/admin/properties/add" class="btn btn-link float-right"><i class="fa fa-plus"></i> Agregar propiedad</a>
 </h3>
 <div class="my-3 px-4 py-1 bg-white rounded box-shadow">
